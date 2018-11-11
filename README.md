@@ -1,6 +1,6 @@
 # Viberex
 
-**TODO: Add description**
+**Viber REST API wrapper in Elixir**
 
 ## Installation
 
@@ -15,7 +15,22 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/viberex](https://hexdocs.pm/viberex).
+## Configuration
+In `config\config.exs`, add your Viber authentication token
+```elixir
+config :viberex,
+  auth_token: "token"
+```
 
+## Usage
+
+Viber doesn't provide long pooling, thus you have to set webhook.
+You can use [ngrok](https://ngrok.com/) to test application in development environment.
+
+```elixir
+Viberex.set_webhook("https://my-url.com/viber/webhook")
+```
+
+To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/doc/Viberex.Server.html)
+
+Refer to [viberex documentation](https://hexdocs.pm/viberex) and [Viber API documentation](https://viber.github.io/docs/api/rest-bot-api) for more details

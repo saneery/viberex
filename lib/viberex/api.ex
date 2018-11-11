@@ -2,19 +2,19 @@ defmodule Viberex.API do
   @moduledoc """
   Work with Viber API
   """
-  alias Viberex.{Parser, Config}
+  alias Viberex.Config
 
   def request(method, options \\ []) do
     method
     |> build_url
     |> HTTPoison.post(build_request(options), headers())
-    |> response(method)
+    |> response()
   end
 
-  defp response(response, method) do
+  defp response(response) do
     case decode_response(response) do
       {:ok, result} ->
-        {:ok, Parser.parse_result(result, method)}
+        {:ok, result}
 
       {:error, _} = error ->
         error
