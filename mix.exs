@@ -5,11 +5,13 @@ defmodule Viberex.MixProject do
     [
       app: :viberex,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       name: "Viberex",
-      source_url: "https://github.com/saneery/viberex"
+      source_url: "https://github.com/saneery/viberex",
+      description: "Viber REST API Wrapper written in Elixir",
+      package: package()
     ]
   end
 
@@ -27,6 +29,14 @@ defmodule Viberex.MixProject do
       {:poison, "~> 3.1"},
       {:plug_cowboy, "~> 2.0"},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["saneery"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/saneery/viberex"}
     ]
   end
 end

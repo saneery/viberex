@@ -31,6 +31,6 @@ You can use [ngrok](https://ngrok.com/) to test application in development envir
 Viberex.set_webhook("https://my-url.com/viber/webhook")
 ```
 
-To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/doc/Viberex.Server.html)
+To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/Viberex.Server.html)
 
 Refer to [viberex documentation](https://hexdocs.pm/viberex) and [Viber API documentation](https://viber.github.io/docs/api/rest-bot-api) for more details
