@@ -27,7 +27,7 @@ defmodule Viberex.MixProject do
     [
       {:httpoison, "~> 1.4"},
       {:poison, "~> 3.1"},
-      {:plug_cowboy, "~> 2.0"},
+      {:plug_cowboy, "~> 1.0"},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
