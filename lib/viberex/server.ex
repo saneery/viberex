@@ -5,7 +5,8 @@ defmodule Viberex.Server do
 
   ## Usage
 
-  Write callbacks handler
+  Write callbacks handler. The `handle_callback` function must return `:noreply` or `{:reply, message}`
+  if callback wait response, e.g. [welcome message](https://viber.github.io/docs/api/rest-bot-api/#sending-a-welcome-message).
   ```elixir
   defmodule MyApp.Handler do
     use Viberex.Server
@@ -44,45 +45,12 @@ defmodule Viberex.Server do
 
   defmacro __using__(_) do
     quote do
-      import Plug.Conn
-      require Logger
-
       def start_link(path \\ "/", port \\ 4000) do
-        Plug.Adapters.Cowboy.http(__MODULE__, [path: path], port: port)
-      end
-
-      def init(options), do: options
-
-      def call(conn, opts) do
-        if opts[:path] == conn.request_path do
-          conn
-          |> read_body()
-          |> decode_body()
-          |> response(conn)
-        else
-          send_resp(conn, 404, "not found")
-        end
-      end
-
-      defp decode_body({:ok, body, _conn}) do
-        case Poison.decode(body) do
-          {:ok, params} ->
-            handle_callback(params)
-          error ->
-            Logger.error("Invalid message came: #{body}")
-            :noreply
-        end
-      end
-
-      defp response({:reply, data}, conn) when is_map(data) do
-        conn
-        |> put_resp_header("content-type", "application/json")
-        |> send_resp(200, Poison.encode!(data))
-      end
-      defp response(:noreply, conn) do
-        conn
-        |> put_resp_header("content-type", "application/json")
-        |> send_resp(200, "")
+        Plug.Adapters.Cowboy.http(
+          Viberex.Plug,
+          [path: path, handler: &__MODULE__.handle_callback/1],
+          port: port
+        )
       end
 
       def handle_callback(body), do: :noreply
