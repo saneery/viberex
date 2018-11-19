@@ -1,5 +1,8 @@
 # Viberex
 
+[![Hex.pm](https://img.shields.io/hexpm/v/viberex.svg)](https://hex.pm/packages/viberex)
+[![API Docs](https://img.shields.io/badge/api-docs-green.svg?style=flat)](http://hexdocs.pm/viberex/)
+
 **Viber REST API wrapper in Elixir**
 
 ## Installation
