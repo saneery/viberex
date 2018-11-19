@@ -28,7 +28,7 @@ Viber doesn't provide long pooling, thus you have to set webhook.
 You can use [ngrok](https://ngrok.com/) to test application in development environment.
 
 ```elixir
-Viberex.set_webhook("https://my-url.com/viber/webhook")
+Viberex.set_webhook("https://my-url.com")
 ```
 
 To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/Viberex.Server.html)

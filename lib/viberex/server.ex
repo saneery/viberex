@@ -32,7 +32,7 @@ defmodule Viberex.Server do
 
       # Set args `reqest_path` and `port`
       children = [
-        worker(MyApp, ["/webhook/viber", 8000])
+        worker(MyApp.Handler, ["/webhook/viber", 8000])
       ]
 
       opts = [strategy: :one_for_one, name: MyApp.Supervisor]
