@@ -13,7 +13,7 @@ by adding `viberex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:viberex, "~> 0.1.0"}
+    {:viberex, "~> 0.2.0"}
   ]
 end
 ```
@@ -34,6 +34,6 @@ You can use [ngrok](https://ngrok.com/) to test application in development envir
 Viberex.set_webhook("https://my-url.com")
 ```
 
-To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/Viberex.Server.html)
+To handle callbacks from Viber you can use [Viberex.Server](https://hexdocs.pm/viberex/Viberex.Server.html) or [Viberex.Plug](https://hexdocs.pm/viberex/Viberex.Plug.html)
 
 Refer to [viberex documentation](https://hexdocs.pm/viberex) and [Viber API documentation](https://viber.github.io/docs/api/rest-bot-api) for more details
